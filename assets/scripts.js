@@ -2,12 +2,12 @@ const cotacaoDolar = 5.43
 const usdInput = document.querySelector("#usd")
 const brlInput = document.querySelector("#brl")
 
-usdInput.addEventListener("keyup", () => {
+usdInput.addEventListener("blur", () => {
     usdInput.value = formatCurrency(usdInput.value)
 })
 
 
-brlInput.addEventListener("keyup", () => {
+brlInput.addEventListener("blur", () => {
     brlInput.value = formatCurrency(brlInput.value)
 })
 
@@ -36,6 +36,7 @@ function formatCurrency(value) {
         minimumFractionDigits: 2
     }
     const formatter = new Intl.NumberFormat("pt-BR", options)
+
     return formatter.format(fixedValue)
 }
 
@@ -43,7 +44,7 @@ function fixValue(value) {
     const fixValue = value.replace(",", ".")
     const floatValue = parseFloat(fixValue)
 
-    if (floatValue == NaN)
+    if (isNaN(floatValue))
         return 0
 
     return floatValue

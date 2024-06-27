@@ -41,7 +41,7 @@ main {
   width: 100vw;
   flex-direction: column;
   align-items: center;
-  transform: translateY(-25vh);
+  transform: translateY(-10vh);
 }
 
 main>section {

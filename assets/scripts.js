@@ -1,5 +1,5 @@
-const cotacaoDolar = 5.43;
-const usdInput = document.querySelector("#usd");
+const cotacaoDolar = 5.52;
+const usdInput = document.querySelector("#usd"); // # -> ID | . -> classe
 const brlInput = document.querySelector("#brl");
 const USD_TO_BRL = "usd-to-brl";
 const BRL_TO_USD = "brl-to-usd";
@@ -58,4 +58,21 @@ function fixValue(value) {
   if (isNaN(floatValue)) return 0;
 
   return floatValue;
+}
+
+async function fecthAPI() {
+  try {
+    const BASE_URL = "http://localhost:3000";
+    const ENDPOINT = "/cotacaoBitcoin";
+
+    const response = await fetch(`${BASE_URL}${ENDPOINT}`);
+
+    if (!response.ok) throw new Error(`HTTP status code: ${response.status}`);
+
+    const data = await response.json();
+
+    console.log("Data from Express API:", data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 }

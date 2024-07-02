@@ -60,12 +60,13 @@ function fixValue(value) {
   return floatValue;
 }
 
-async function fecthAPI() {
+async function fecthAPI(endpoint) {
   try {
     const BASE_URL = "http://localhost:3000";
-    const ENDPOINT = "/cotacaoBitcoin";
+    
+    let endipoint = endpoint === "BTC-USD" ? "/cotacaoBitcoin" : "/cotacaoReal";
 
-    const response = await fetch(`${BASE_URL}${ENDPOINT}`);
+    const response = await fetch(`${BASE_URL}${endipoint}`);
 
     if (!response.ok) throw new Error(`HTTP status code: ${response.status}`);
 
